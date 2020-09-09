@@ -20,6 +20,16 @@ namespace MobilePhoneCatalog.Controllers
 
         public IActionResult Index()
         {
+            using(var db = new MobilePhonesDBContext())
+            {
+                var mobile = new Phone
+                {
+                    ID = 1,
+                    Name = "dede",
+                    CpuModel = "ff"
+                };
+
+            }
             return View();
         }
 

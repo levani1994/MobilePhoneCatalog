@@ -8,7 +8,7 @@ namespace MobilePhoneCatalog.Models
 {
     public class MobilePhonesDBContext : DbContext
     {
-        public DbSet<Publisher> Publishers { get; set; }
+        public DbSet<Phone> Phones { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"");
