@@ -28,7 +28,7 @@ namespace MobilePhoneCatalog.Controllers
                     Name = "dede",
                     CpuModel = "ff"
                 };
-
+               
             }
             return View();
         }
@@ -42,6 +42,23 @@ namespace MobilePhoneCatalog.Controllers
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+        }
+        [HttpGet]
+        public IEnumerable<Phone> Get()
+        {
+            using(var _context = new MobilePhonesDBContext())
+            {
+                Phone phone = _context.Phones.Where(x => x.Name == "motorola").FirstOrDefault();
+                phone.Name = "moto";
+            //    phone.OperationSystem = "android";
+              //  _context.Phones.Add(phone);
+                _context.SaveChanges();
+
+
+
+                return _context.Phones.ToList();
+            }
+//            return new List<Phone>();
         }
     }
 }

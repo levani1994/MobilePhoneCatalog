@@ -11,7 +11,7 @@ namespace MobilePhoneCatalog.Models
         public DbSet<Phone> Phones { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer(@"");
+            optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-3PNQ5VO;Initial Catalog=MobilePhoneCatalog;Integrated Security=True");
         }
     }
 }
