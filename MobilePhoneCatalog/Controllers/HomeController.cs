@@ -20,16 +20,6 @@ namespace MobilePhoneCatalog.Controllers
 
         public IActionResult Index()
         {
-            using(var db = new MobilePhonesDBContext())
-            {
-                var mobile = new Phone
-                {
-                    ID = 1,
-                    Name = "dede",
-                    CpuModel = "ff"
-                };
-               
-            }
             return View();
         }
 
@@ -44,21 +34,50 @@ namespace MobilePhoneCatalog.Controllers
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
         }
         [HttpGet]
-        public IEnumerable<Phone> Get()
+        public ViewResult GetAllPhones()
         {
-            using(var _context = new MobilePhonesDBContext())
+            var _context = new MobilePhonesDBContext();
+            var data = _context.Phones.ToList();
+            return View(data);
+        }
+
+        public IEnumerable<PhoneModel> SyncPhones()
+        {
+            using (var _context = new MobilePhonesDBContext())
             {
-                Phone phone = _context.Phones.Where(x => x.Name == "motorola").FirstOrDefault();
-                phone.Name = "moto";
-            //    phone.OperationSystem = "android";
-              //  _context.Phones.Add(phone);
+                PhoneModel phoneModel = new PhoneModel
+                {
+                    Name = "Iphone XR",
+                    Manufacturer = "Apple",
+                    OperationSystem = "IOS",
+                    Price = 1800,
+                    ScreenRezolution = "1920x1200",
+                    ScreenSize = 5.5,
+                    Size = "170x68x12",
+                    Storage = 256,
+                    Weitht = 230
+                };
+                _context.Phones.Add(phoneModel);
+                for (int i = 0; i < 3; i++)
+                {
+                    phoneModel = new PhoneModel
+                    {
+                        Name = "GOOGLE PIXEL",
+                        Manufacturer = "Google",
+                        OperationSystem = "Android",
+                        Price = 2000,
+                        ScreenRezolution = "1920x1200",
+                        ScreenSize = 5.5,
+                        Size = "170x68x12",
+                        Storage = 256,
+                        Weitht = 230
+                    };
+                    _context.Phones.Add(phoneModel);
+                }
+               
                 _context.SaveChanges();
-
-
-
-                return _context.Phones.ToList();
             }
-//            return new List<Phone>();
+            return new List<PhoneModel>();
         }
     }
 }

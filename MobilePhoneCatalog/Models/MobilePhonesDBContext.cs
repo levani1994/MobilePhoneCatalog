@@ -8,7 +8,7 @@ namespace MobilePhoneCatalog.Models
 {
     public class MobilePhonesDBContext : DbContext
     {
-        public DbSet<Phone> Phones { get; set; }
+        public DbSet<PhoneModel> Phones { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(@"Data Source=DESKTOP-3PNQ5VO;Initial Catalog=MobilePhoneCatalog;Integrated Security=True");

@@ -9,7 +9,7 @@ using MobilePhoneCatalog.Models;
 namespace MobilePhoneCatalog.Migrations
 {
     [DbContext(typeof(MobilePhonesDBContext))]
-    [Migration("20200910194907_initialCreate")]
+    [Migration("20200911211752_initialCreate")]
     partial class initialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -20,7 +20,7 @@ namespace MobilePhoneCatalog.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MobilePhoneCatalog.Models.Phone", b =>
+            modelBuilder.Entity("MobilePhoneCatalog.Models.PhoneModel", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -51,8 +51,8 @@ namespace MobilePhoneCatalog.Migrations
                     b.Property<double>("ScreenSize")
                         .HasColumnType("float");
 
-                    b.Property<double>("Size")
-                        .HasColumnType("float");
+                    b.Property<string>("Size")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("Storage")
                         .HasColumnType("int");

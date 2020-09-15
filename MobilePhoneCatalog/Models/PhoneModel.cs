@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace MobilePhoneCatalog.Models
 {
-    public class Phone
+    public class PhoneModel
     {
         public int ID { get; set; }
         public string Name { get; set; }
         public string Manufacturer { get; set; }
-        public double Size { get; set; }
+        public string Size { get; set; }
         public double Weitht { get; set; }
         public double ScreenSize { get; set; }
         public string ScreenRezolution { get; set; }

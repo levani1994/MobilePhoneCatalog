@@ -14,7 +14,7 @@ namespace MobilePhoneCatalog.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Name = table.Column<string>(nullable: true),
                     Manufacturer = table.Column<string>(nullable: true),
-                    Size = table.Column<double>(nullable: false),
+                    Size = table.Column<string>(nullable: true),
                     Weitht = table.Column<double>(nullable: false),
                     ScreenSize = table.Column<double>(nullable: false),
                     ScreenRezolution = table.Column<string>(nullable: true),
